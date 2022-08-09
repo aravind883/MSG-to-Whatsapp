@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap');
+
+
+body{
+    background-color: var(--background);
+    margin: 0;
+}
+
+.phoneNumberInputs{
+    padding : 20px;
+    margin : 10px;
+    font-size : 25px;
+    border: none;
+    border-radius: 12px;
+}
+
+#phoneNumber{    
+    background-color: var(--background);
+    outline: none;
+    color: var(--white);
+    border : solid 2px var(--background);
+    font-family: 'Work Sans', sans-serif;
+    width : 600px;
+    transition: 300ms;
+}
+
+#phoneNumber:focus{
+    border : solid 2px var(--textFieldBorderOnHover);
+    border-bottom : none;
+}
+
+#phoneNumber:hover{
+    border : solid 2px var(--textFieldBorderOnHover);
+}
+
+#phoneNumber::placeholder{
+    color : var(--textFieldPlaceholder);
+}
+
+#phoneNumber::-moz-placeholder{
+    color : var(--textFieldPlaceholder);
+}
+
+#phoneNumber::-ms-input-placeholder{
+    color : var(--textFieldPlaceholder);
+}
+
+#phoneNoButton{
+    background-color: var(--buttonColor);
+    cursor: pointer;
+    border : solid 2px var(--buttonBorder);
+    font-family: 'Ubuntu', sans-serif;
+    color : var(--white);
+    vertical-align: bottom;
+    border-radius: 60px;
+    transition: 300ms;
+    padding : 12px 40px 12px 30px;
+}
+
+#phoneNoButton:hover{
+    background-color: var(--buttonColorOnHover);
+}
+
+#phoneNoButton span{
+    padding : 10px;
+    color : var(--white);
+    vertical-align: sub;
+}
+
+#phoneNoButton span svg{
+    width : 25px;
+    height : 25px;
+}
+
+.phoneNumberDiv{
+    background-color: var(--background2);
+    padding : 30px;
+    width : fit-content;
+    box-sizing: border-box;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    margin : auto;
+    border-radius: 20px;
+}
+
+.phoneNumberInnerDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.TitleDiv{
+    margin : 15px;
+}
+
+.Title{
+    font-family: 'Ubuntu', sans-serif;
+    color : var(--white);
+    font-size : 30px;
+}
+
+.SubTitle{
+    font-family: 'Ubuntu', sans-serif;
+    color : var(--white);
+    opacity : 65%;
+    font-size : 20px;
+}
+
+.CountriesDDList{
+    display: none;
+}
+
+.CountriesDDList{
+    position: absolute;
+    /* top: -10px; */
+    top: 80px;
+    left: 10px;
+    width: 640px;
+    max-height: 250px;
+    overflow: auto;
+    background-color: var(--background);
+    
+    border : solid 2px var(--textFieldBorderOnHover);
+    border-top: dashed 2px #333333;
+    
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+div#phoneNoDropDownDiv{
+    position: relative;
+}
+
+div#phoneNoDropDownDiv.show .CountriesDDList{
+    display: block;
+}
+
+div#phoneNoDropDownDiv.show #phoneNumber{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.countryItem{
+    padding : 10px;
+    margin : 10px;
+    cursor: pointer;
+    transition: 100ms;
+    border-radius: 10px;
+}
+
+.countryItem:hover{
+    background-color: var(--background2);
+}
+
+.countryItem .flag-icon{
+    font-size: 30px;
+    border-radius : 5px;
+    vertical-align: middle;
+}
+
+.countryItem .countryName{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    color : var(--white);
+    margin-left : 15px;
+    vertical-align: middle;
+}
+
+.countryItem .countryCode{
+    font-family: 'Work Sans', sans-serif;
+    color : var(--white);
+    font-size: 15px;
+    opacity: 0.65;
+    vertical-align: middle;
+    float : right;
+}
+
+
+/* Scrollbar CSS */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  margin : 3px;
+}
+::-webkit-scrollbar-button {
+  width: 28px;
+  height: 28px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--buttonColor);
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--buttonColorOnHover);
+}
+::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+::-webkit-scrollbar-track {
+  background: var(--background2);
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}

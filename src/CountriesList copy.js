@@ -1,7 +1,13 @@
-import React from 'react';
 
-function GenerateFlags(props) {
-    const flagsCSV = [
+
+function fillCountryCode(countryCode){
+    console.log("fillCountryCode called");
+    console.log("Country code : ", countryCode);
+    document.getElementById("phoneNumber").value = countryCode;
+}
+
+function GenerateFlags(p){
+    let flagsCSV = [
         ["Afghanistan","93","AFG"],
         ["Albania","355","ALB"],
         ["Algeria","213","DZA"],
@@ -244,43 +250,28 @@ function GenerateFlags(props) {
         ["Zimbabwe","263","ZWE"]   
     ];
 
-    const handleCountryClick = (countryCode) => {
-        fillCountryCode(countryCode);
-    };
+    return <div>
+        {flagsCSV.map(function(flag, index) {    
+            let countryNameLowerCase = flag[0].toLowerCase();
+            let searchTerm = p.searchTerm;
+            if(searchTerm != null){
+                searchTerm = searchTerm.toLowerCase();
+            }
 
-    const fillCountryCode = (countryCode) => {
-        console.log("fillCountryCode called");
-        console.log("Country code: ", countryCode);
-        document.getElementById("phoneNumber").value = countryCode;
-    };
+            let resultsBoolean =    countryNameLowerCase.includes(searchTerm) ||
+                                    flag[1].includes(searchTerm) ||
+                                    ("+" + flag[1]).includes(searchTerm) ||
+                                    searchTerm == null;
 
-    const searchTerm = props.searchTerm ? props.searchTerm.toLowerCase() : null;
-
-    return (
-        <div>
-            {flagsCSV.map((flag, index) => {
-                const countryNameLowerCase = flag[0].toLowerCase();
-
-                const resultsBoolean =
-                    countryNameLowerCase.includes(searchTerm) ||
-                    flag[1].includes(searchTerm) ||
-                    ("+" + flag[1]).includes(searchTerm) ||
-                    searchTerm === null;
-
-                return resultsBoolean && (
-                    <div
-                        key={"countryItem" + index}
-                        className="countryItem"
-                        onClick={() => handleCountryClick(flag[1])}
-                    >
-                        <span className={'flag-icon flag-icon-' + flag[2].toLowerCase()}></span>
-                        <span className="countryName">{flag[0]}</span>
-                        <span className="countryCode">{"(+" + flag[1] + ")"}</span>
-                    </div>
-                );
-            })}
-        </div>
-    );
+            return (resultsBoolean) && (
+            <div className="countryItem" id={"countryItem" + index.toString()} onClick={fillCountryCode(flag[1])}>
+                <span className={'flag-icon flag-icon-' + flag[2].toLowerCase()}></span>
+                <span className="countryName">{flag[0]}</span>
+                <span className="countryCode">{"(+" + flag[1] + ")"}</span>
+            </div>
+            )
+        })}
+    </div>
 }
 
-export default GenerateFlags;
+export default GenerateFlags
